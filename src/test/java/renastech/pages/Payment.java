@@ -31,4 +31,19 @@ public class Payment extends BrowserUtils {
         month.sendKeys(Month);
     }
 
+    public void setYear(String Year){
+        staticWait(1);
+        year.sendKeys(Year);
+
+    }
+
+    public void setCvvCode(String CVVCODE){
+        staticWait(1);
+        cvvCode.sendKeys(CVVCODE);
+    }
+
+    public void setPayButton(){
+       payButton.click();
+    }
+
 }
