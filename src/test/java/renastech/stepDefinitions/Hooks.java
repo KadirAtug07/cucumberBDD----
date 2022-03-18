@@ -13,6 +13,6 @@ public class Hooks extends BrowserUtils {
         Driver.getDriver();
         BrowserUtils.setWaitTime();
         driver.manage().window().maximize();
-        driver.get(ConfigurationsReader.getProperties("urlHRM"));
+       driver.get(ConfigurationsReader.getProperties("urlHRM"));
     }
 }

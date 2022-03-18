@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources", //this is for feature files path
         glue = "renastech/stepDefinitions", //this is for steps path
-        tags = "@LoginWithoutParams",
+        tags = "@TC100",
         dryRun = false // when it is true it will check if there is any undefined steps
 
 )
