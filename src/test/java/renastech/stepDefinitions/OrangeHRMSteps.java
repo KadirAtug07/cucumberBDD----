@@ -5,8 +5,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import renastech.pages.OrangeHRMHome;
 import renastech.pages.OrangeHRMLogin;
+import renastech.utils.BrowserUtils;
+
+import java.util.Map;
 
 public class OrangeHRMSteps {
+
+
 
     OrangeHRMHome orangeHRMHome=new OrangeHRMHome();
 
@@ -68,6 +73,27 @@ public class OrangeHRMSteps {
     @Then("The user should be able to see {string}")
     public void the_user_should_be_able_to_see(String expectedHeader) {
         orangeHRMHome.setProfileHeader(expectedHeader);
+
+
+    }
+
+    @Then("The User wants to see add employee page")
+    public void the_user_wants_to_see_add_employee_page(Map<String,String> dataTable) {
+        orangeHRMHome.setAddEmployee();
+        orangeHRMHome.setName(dataTable.get("FirstName"));
+        orangeHRMHome.setLastName(dataTable.get("LastName"));
+
+    }
+    @Then("The user wants to add login details")
+    public void the_user_wants_to_add_login_details(Map<String,String> dataTable) {
+        orangeHRMHome.setDetailsBox();
+        orangeHRMHome.setName2(dataTable.get("User Name"));
+        orangeHRMHome.setPassword(dataTable.get("Password"));
+        orangeHRMHome.setRepassword(dataTable.get("Password"));
+        orangeHRMHome.setStatus(dataTable.get("Status"));
+
+
+
 
 
     }
