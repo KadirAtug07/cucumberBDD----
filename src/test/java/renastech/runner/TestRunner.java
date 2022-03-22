@@ -9,8 +9,16 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources", //this is for feature files path
         glue = "renastech/stepDefinitions", //this is for steps path
-        tags = "@smoke",
-        dryRun = false // when it is true it will check if there is any undefined steps
+        tags = "@TC300",
+        dryRun = false, // when it is true it will check if there is any undefined steps
+        plugin={ "pretty",
+                "html:target/default-cucumber-reports.html",
+                "json:target/cucumber.json",
+                "rerun:target/rerun.txt"
+}
+
+
+
 
 )
 

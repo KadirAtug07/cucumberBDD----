@@ -7,6 +7,7 @@ import renastech.pages.OrangeHRMHome;
 import renastech.pages.OrangeHRMLogin;
 import renastech.utils.BrowserUtils;
 
+import java.util.List;
 import java.util.Map;
 
 public class OrangeHRMSteps {
@@ -91,8 +92,23 @@ public class OrangeHRMSteps {
         orangeHRMHome.setPassword(dataTable.get("Password"));
         orangeHRMHome.setRepassword(dataTable.get("Password"));
         orangeHRMHome.setStatus(dataTable.get("Status"));
+    }
+
+    @Then("The user wants to add an employee in a list way")
+    public void the_user_wants_to_add_an_employee_in_a_list_way(List<List<String>> dataTable) {
+        orangeHRMHome.setAddEmployee();
+        orangeHRMHome.setName(dataTable.get(0).get(0));
+        orangeHRMHome.setLastName(dataTable.get(0).get(1));
 
 
+    }
+    @Then("The user wants to add login details in a list way")
+    public void the_user_wants_to_add_login_details_in_a_list_way(List<List<String>> dataTable) {
+        orangeHRMHome.setDetailsBox();
+        orangeHRMHome.setName2(dataTable.get(2).get(0));
+        orangeHRMHome.setPassword(dataTable.get(2).get(1));
+        orangeHRMHome.setRepassword(dataTable.get(2).get(1));
+        orangeHRMHome.setStatus(dataTable.get(2).get(2));
 
 
 

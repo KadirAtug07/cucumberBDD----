@@ -57,5 +57,8 @@ public class OrangeHRMHome extends BrowserUtils {
     public void setName2(String Name2){ name2.sendKeys(Name2); }
     public void setPassword(String Password){password.sendKeys(Password);}
     public void setRepassword(String Repassword){repassword.sendKeys(Repassword);}
-    public void setStatus(String Status){ BrowserUtils.selectFromDropDown(status,Status); }
+    public void setStatus(String Status){
+        BrowserUtils.selectFromDropDown(status,Status);
+        logger.info("Status is passed");
+    }
 }
