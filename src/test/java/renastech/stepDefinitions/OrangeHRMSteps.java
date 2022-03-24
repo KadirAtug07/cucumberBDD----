@@ -3,6 +3,7 @@ package renastech.stepDefinitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import renastech.pages.Admin;
 import renastech.pages.OrangeHRMHome;
 import renastech.pages.OrangeHRMLogin;
 import renastech.utils.BrowserUtils;
@@ -10,10 +11,10 @@ import renastech.utils.BrowserUtils;
 import java.util.List;
 import java.util.Map;
 
-public class OrangeHRMSteps {
+public class OrangeHRMSteps extends BrowserUtils {
 
 
-
+    Admin admin=new Admin();
     OrangeHRMHome orangeHRMHome=new OrangeHRMHome();
 
     @Given("The user wants to go to orangeHRM application")
@@ -110,7 +111,34 @@ public class OrangeHRMSteps {
         orangeHRMHome.setRepassword(dataTable.get(2).get(1));
         orangeHRMHome.setStatus(dataTable.get(2).get(2));
 
+    }
+
+    @Then("The user wants to go to Admin page")
+    public void the_user_wants_to_go_to_admin_page() {
+        admin.setAdminModule();
+
+    }
+    @Then("The user wants to go to Nationalities section")
+    public void the_user_wants_to_go_to_nationalities_section() {
+
+        staticWait(2);
+        admin.setNationalitiesSection();
+
+    }
+    @Then("The user wants to add new nationalities")
+    public void the_user_wants_to_add_new_nationalities() {
+        admin.setAddNationButton();
+
+    }
+    @Then("The user wants to add nationalities as {string}")
+    public void the_user_wants_to_add_nationalities_as(String nationName) {
+        staticWait(2);
+        admin.setAddNationBox(nationName);
+        staticWait(2);
+        admin.setSaveButton();
+
 
 
     }
+
 }
