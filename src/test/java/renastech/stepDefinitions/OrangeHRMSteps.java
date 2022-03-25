@@ -3,11 +3,17 @@ package renastech.stepDefinitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import renastech.pages.Admin;
 import renastech.pages.OrangeHRMHome;
 import renastech.pages.OrangeHRMLogin;
 import renastech.utils.BrowserUtils;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -136,9 +142,30 @@ public class OrangeHRMSteps extends BrowserUtils {
         admin.setAddNationBox(nationName);
         staticWait(2);
         admin.setSaveButton();
-
-
-
     }
 
+
+    @Given("The user wants to login Orange HRM with excel")
+    public void the_user_wants_to_login_orange_hrm_with_excel() throws IOException {
+        String filePath="/Users/hasanyildirim/IdeaProjects/cucumberBDD/src/test/resources/Book1.xlsx";
+        FileInputStream fileInputStream = new FileInputStream(filePath);
+        XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
+        XSSFSheet sheet = workbook.getSheet("Sheet1");
+
+        int rows=sheet.getLastRowNum();
+        int cols=sheet.getRow(0).getLastCellNum();
+
+        XSSFRow row=sheet.getRow(1);
+
+        System.out.println(row.getCell(0));
+        System.out.println(row.getCell(1));
+
+        System.out.println("total row number"+rows);
+        System.out.println("total column number"+cols);
+
+
+        OrangeHRMLogin orangeHRMLogin= new OrangeHRMLogin();
+        orangeHRMLogin.setDataFromExcel(row.getCell(0).toString(),row.getCell(1).toString());
+
+    }
 }

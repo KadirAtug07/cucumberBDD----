@@ -1,4 +1,5 @@
 Feature: we explain how background works
+
 Background: User navigates to Orange HRM dashboard
 Given The user wants to go to orangeHRM application
 When The user wants to enter username and password
